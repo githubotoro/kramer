@@ -109,7 +109,7 @@ const handleRequest = async (req) => {
           <div tw="absolute flex flex-col w-full h-full items-center px-[2rem]">
             <div tw="mt-[2rem] text-[5rem]">👀</div>
             <div tw="mt-[1rem] flex flex-col items-center text-center text-[2.5rem] p-[1rem] w-full bg-[#EBEBF0] text-[#242426] rounded-[2rem]">
-              <div tw="flex flex-col">You voted on {vote}</div>
+              <div tw="flex flex-col">You voted on "{vote}"</div>
             </div>
 
             <div tw="mt-[1rem] flex flex-row h-[9.5rem] w-[50rem]">

@@ -6,9 +6,9 @@ const handleRequest = async (req) => {
   const contestId = req.nextUrl.searchParams.get("contestId");
   const fid = req.nextUrl.searchParams.get("fid");
   const vote = req.nextUrl.searchParams.get("vote");
+  const voteStatus = req.nextUrl.searchParams.get("voteStatus");
 
   let voteValue = vote;
-  let voteStatus = "new";
 
   const { data, error } = await supabase
     .from("contest")
@@ -30,9 +30,6 @@ const handleRequest = async (req) => {
 
   if (existingLog) {
     voteValue = existingLog.vote;
-    voteStatus = "old";
-
-    console.log("vote value is ", voteValue);
   } else {
     const { data: newLog, error: insertError } = await supabase
       .from("logs")
@@ -72,7 +69,7 @@ const handleRequest = async (req) => {
               <div>
                 {voteStatus === "new"
                   ? `Congrats! You voted on "${vote.toString()}"`
-                  : `Whoops! You have already voted on ${existingLog.vote}`}
+                  : `Whoops! You have already voted on "${existingLog.vote}"`}
               </div>
             </div>
 
